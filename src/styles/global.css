@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Marcellus&display=swap');
+:root {
+  
+  /* FONTS */
+
+  --font-display: "Marcellus", serif;
+  --font-body: "Inter", sans-serif;
+
+  /* BACKGROUNDS */
+
+  --bg-main: #111315;
+  --bg-secondary: #1A1D21;
+  --border-color: #2A2F36;
+
+  /* TEXT */
+
+  --text-main: #E8E4DC;
+  --text-secondary: #A6ADB8;
+
+  /* PRIMARY ACCENT (ORANGE) */
+
+  --accent-primary: #E59B63;
+  --accent-primary-hover: #F0AE7B;
+
+  /* LINKS/INFO (BLUE) */
+
+  --accent-info: #6C8EBF;
+  --accent-info-hover: #83A5D6;
+
+  /* MAGIC/SPECIAL (PINK) */
+
+  --accent-magic: #C47AA6;
+  --accent-magic-hover: #D98CB9;
+
+  /* STATUS */
+
+  --success: #7FA37D;
+  --error: #C96B6B;
+
+  /* EXTRA UI COLORS */
+
+  --shadow-color: rgba(0, 0, 0, 0.35);
+
+  --overlay-dark: rgba(0, 0, 0, 0.55);
+
+  --input-bg: #16191C;
+  --input-focus: #22262B;
+
+  --button-muted: #23272D;
+  --button-muted-hover: #2C3138;
+
+  --divider: #252A30;
+
+  /* BORDER RADIUS */
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* TRANSITIONS */
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+h1, h2, h3{
+  font-family: var(--font-display);
+  font-weight: normal;
+  color: var(--text-main);
+}
+
+body, p, input, button, li {
+  font-family: var(--font-body);
+  color: var(--text-main);
+}
+
+span {
+  color: var(--text-secondary);
+}
+
+body{
+  background-color: var(--bg-main);
+  min-height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

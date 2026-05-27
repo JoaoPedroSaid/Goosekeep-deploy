@@ -1,0 +1,645 @@
+.sidebar {
+  width: 280px;
+  min-width: 280px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1rem;
+
+  border-right: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+/* ── Top ── */
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* ── Icons ── */
+
+.icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.arrow-icon {
+  width: 12px;
+  height: 12px;
+  transition: transform var(--transition-fast);
+}
+
+.arrow-icon--open {
+  transform: rotate(90deg);
+}
+
+.collapse-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Base button reset ── */
+
+button {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* ── Named buttons ── */
+
+.icon-button {
+  width: fit-content;
+  padding: 0.25rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.icon-button:hover {
+  background: var(--button-muted-hover);
+}
+
+.menu-button {
+  min-height: 34px;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  transition: background var(--transition-fast);
+}
+
+.menu-button:hover {
+  background: var(--button-muted);
+}
+
+.menu-button p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* ── Campaign dropdown menu ── */
+
+.campaign-menu-wrapper {
+  position: relative;
+}
+
+.campaign-menu {
+  margin-top: 0.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campaign-menu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.campaign-menu-empty {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 0.4rem 0.5rem;
+  font-style: italic;
+}
+
+.campaign-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.campaign-menu-item:hover {
+  background: var(--button-muted);
+}
+
+.campaign-menu-name {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.2rem 0;
+  transition: color var(--transition-fast);
+}
+
+.campaign-menu-name:hover {
+  color: var(--text-main);
+}
+
+.campaign-menu-name--active {
+  color: var(--accent-primary);
+}
+
+.campaign-menu-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.campaign-action-button {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: background var(--transition-fast);
+}
+
+.campaign-action-button:hover {
+  background: var(--button-muted-hover);
+}
+
+.campaign-action-button--delete:hover {
+  background: rgba(201, 107, 107, 0.18);
+}
+
+.campaign-menu-create {
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+  width: 100%;
+}
+
+.campaign-menu-create:hover {
+  background: rgba(229, 155, 99, 0.1);
+}
+
+/* ── Inline input (nova campanha / nova pasta) ── */
+
+.new-item-input-row {
+  padding: 0.25rem 0.1rem;
+}
+
+.new-item-input {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.875rem;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.new-item-input:focus {
+  border-color: var(--accent-primary);
+  background: var(--input-focus);
+}
+
+.rename-input {
+  flex: 1;
+  background: var(--input-bg);
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-main);
+  outline: none;
+  min-width: 0;
+}
+
+/* ── Content ── */
+
+.sidebar-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section-title {
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Campaign action buttons (nova ficha / nova pasta) ── */
+
+.sidebar-campaign-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.sidebar-action-button {
+  flex: 1;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: var(--button-muted);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.5rem;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.sidebar-action-button:hover {
+  background: var(--button-muted-hover);
+  color: var(--text-main);
+}
+
+/* ── Lists ── */
+
+.sidebar-list,
+.nested-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  list-style: none;
+}
+
+.nested-list {
+  margin-top: 0.2rem;
+  padding-left: 1.2rem;
+}
+
+.nested-empty {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0.5rem;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+/* ── Folder row ── */
+
+.sidebar-folder-row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.sidebar-folder-row:hover {
+  background: var(--button-muted);
+}
+
+.sidebar-folder-row .sidebar-item {
+  flex: 1;
+  min-height: 32px;
+  padding: 0.3rem 0.4rem;
+  border-radius: var(--radius-sm);
+}
+
+.sidebar-folder-row .sidebar-item:hover {
+  background: none;
+}
+
+.folder-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.sidebar-folder-row:hover .folder-actions {
+  opacity: 1;
+}
+
+.sidebar-action-icon {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.sidebar-action-icon:hover {
+  background: var(--button-muted-hover);
+  color: var(--text-main);
+}
+
+.sidebar-action-icon--delete:hover {
+  background: rgba(201, 107, 107, 0.18);
+  color: var(--error);
+}
+
+/* ── File row ── */
+
+.sidebar-file-row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+.sidebar-item {
+  flex: 1;
+  min-height: 32px;
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.5rem;
+  transition: background var(--transition-fast);
+}
+
+.sidebar-item:hover {
+  background: var(--button-muted);
+}
+
+.file-item {
+  padding-left: 0.3rem;
+}
+
+.file-item--active {
+  background: var(--button-muted) !important;
+  color: var(--text-main);
+}
+
+.file-item--active span {
+  color: var(--accent-primary);
+}
+
+.sidebar-delete-button {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  opacity: 0;
+  transition: opacity var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.sidebar-file-row:hover .sidebar-delete-button {
+  opacity: 1;
+}
+
+.sidebar-delete-button:hover {
+  background: rgba(201, 107, 107, 0.18);
+  color: var(--error);
+}
+
+/* ── No campaign placeholder ── */
+
+.sidebar-no-campaign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  opacity: 0.4;
+}
+
+.sidebar-no-campaign p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ── Footer ── */
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-button {
+  min-height: 34px;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.6rem;
+  transition: background var(--transition-fast);
+}
+
+.footer-button:hover {
+  background: var(--button-muted);
+}
+
+.footer-button p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ── Footer panel (search / trash) ── */
+
+.footer-button--active {
+  background: var(--button-muted);
+}
+
+.footer-button--active p {
+  color: var(--text-main);
+}
+
+.footer-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+}
+
+/* ── Search results ── */
+
+.search-results {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.search-empty {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 0.25rem 0;
+}
+
+.search-result-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.search-result-item:hover {
+  background: var(--button-muted);
+}
+
+.search-result-name {
+  font-size: 0.875rem;
+  color: var(--text-main);
+}
+
+.search-result-meta {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ── Trash panel ── */
+
+.trash-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.1rem;
+}
+
+.trash-panel-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.trash-empty-btn {
+  width: fit-content;
+  font-size: 0.75rem;
+  color: var(--error);
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+  opacity: 0.7;
+  transition: background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.trash-empty-btn:hover {
+  background: rgba(201, 107, 107, 0.15);
+  opacity: 1;
+}
+
+.trash-empty-msg {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 0.25rem 0;
+}
+
+.trash-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.trash-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.35rem 0.4rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.trash-item:hover {
+  background: var(--button-muted);
+}
+
+.trash-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  min-width: 0;
+}
+
+.trash-item-type {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.trash-item-name {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trash-restore-btn {
+  width: fit-content;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.trash-restore-btn:hover {
+  background: rgba(229, 155, 99, 0.1);
+}
