@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import "../styles/global.css"
 import "../styles/sidebar.css"
 
+import icon from "/public/icon.png"
 import menuArrow from "../assets/menu-arrow.png"
 import menuMenu from "../assets/menu-menu.png"
 import arrow from "../assets/arrow.png"
@@ -122,7 +123,7 @@ function Sidebar({
             <div className="sidebar-top">
 
                 <div className="sidebar-header">
-                    <img src="/public/icon.png" alt="Logo" className="logo" />
+                    <img src={icon} alt="Logo" className="logo" />
                     <button className="icon-button" onClick={onCloseSidebar}>
                         <img src={menuArrow} alt="Fechar menu" className="icon collapse-icon" />
                     </button>
